@@ -352,9 +352,10 @@ to the receiving ground station. We have to calculate the range rate
 (time derivative of the range) for both links in order to construct
 Doppler curves for the .wave files.
 
-But, we’re well on the way and will pick up tomorrow with a goal of
-being done by Monday.
+Here is what SARSAT system looks like. 
 
-More soon!
+![image](https://user-images.githubusercontent.com/6608613/87234541-cc5e7d80-c386-11ea-9998-ce3d337b970a.png)
+
+Is the .csv all we need? 
 
 
