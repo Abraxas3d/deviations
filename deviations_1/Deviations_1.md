@@ -2,8 +2,7 @@
 
 Abraxas3d\
 MustBeArt\
-FirmWarez\
-
+FirmWarez
 
 **Deviations** is the name of the GNU Radio Conference 2020 (GRCon20)
 Capture the Flag (CTF) competition.
