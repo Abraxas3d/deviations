@@ -194,8 +194,13 @@ OTHR will be one of the later CTF challenges.\
 
 D.B. Cooper was there to spy on the ongoing operation.
 
-![](Pictures/1000000000000870000005A0CB3D82BC6D965FDE.png){width="664"
-height="443"}\
+
+
+![image](https://user-images.githubusercontent.com/6608613/87234292-5d802500-c384-11ea-8581-bc013d4d8c8a.png)
+
+
+
+
 \
 Here is a photo D.B. took.\
 \
@@ -229,8 +234,9 @@ OK so where was DB Cooper when he got lost?\
 He accidentally ended up falling into Crack in the Ground because there
 was deliberate interference with his GPS.
 
-![](Pictures/1000020100000A00000007800C377375155BF424.png){width="664"
-height="498"}
+![image](https://user-images.githubusercontent.com/6608613/87234307-7a1c5d00-c384-11ea-94a2-5dce86091471.png)
+
+
 
 So we found some coordinates from Crack in the Ground (above).
 
@@ -320,8 +326,8 @@ But no matter, because we are getting useful passes out of this. We’re
 going to have to address the IGRF problem but let’s confirm what we’ve
 got so far, first.
 
-![](Pictures/100000000000023A000001A4E2EC0507E6D1FA60.jpg){width="569"
-height="420"}\
+![image](https://user-images.githubusercontent.com/6608613/87234305-74bf1280-c384-11ea-8cb7-fb83c271a206.png)
+
 \
 
 Next we cross-checked with InstantTrack.\
@@ -335,8 +341,8 @@ be higher. Well guess what? That worked.\
 \
 This is the result:
 
-![](Pictures/1000000000000230000001A448C06392D3E5680F.jpg){width="560"
-height="420"}\
+![image](https://user-images.githubusercontent.com/6608613/87234309-7dafe400-c384-11ea-92a0-eadc4c9dee3c.png)
+
 \
 \
 \
