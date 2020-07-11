@@ -1,11 +1,9 @@
-Deviations\_1
+#Deviations\_1
 
 Abraxas3d\
 MustBeArt\
 FirmWarez
 
-14 June 2020
-============
 
 **Deviations** is the name of the GNU Radio Conference 2020 (GRCon20)
 Capture the Flag (CTF) competition.\
@@ -125,11 +123,13 @@ SARSAT 7 (NOAA 15)
 2 25338 98.7173 182.9664 0009298 299.7563 60.2692 14.25969989147327
 
 We downloaded “Satellite Orbit Computation” from MATLAB to create the
-files required for this Deviation.\
-\
-[]{#anchor}Charles Rino (2020). []{#anchor-1}Satellite Orbit Computation
-(https://www.mathworks.com/matlabcentral/fileexchange/28888-satellite-orbit-computation),
-MATLAB Central File Exchange. Retrieved .
+files required for this Deviation.
+
+Charles Rino (2020). Satellite Orbit Computation
+
+https://www.mathworks.com/matlabcentral/fileexchange/28888-satellite-orbit-computation
+
+MATLAB Central File Exchange.
 
 “A modified version of the SGP4 code used for standard satellite orbit
 computation using two-line elements (TLE). The modified code outputs
@@ -147,12 +147,10 @@ We found historical Keplerian elements for NOAA 15.
 
 12 May 2016\
 \
-[]{#anchor-2}*1 25338U 98030A 16133.50146488 .00000072 00000-0 49390-4 0
-9999*
+*1 25338U 98030A 16133.50146488 .00000072 00000-0 49390-4 09999*
 
-[]{#anchor-3}*2* []{#anchor-4}*25338 98.7831 137.5795 0009488 292.2377
-67.7796 14.25723709935905\
-*\
+*2 25338 98.7831 137.5795 0009488 292.2377 67.7796 14.25723709935905
+
 This is the sort of thing that the participants will need to find on
 their own. It’s out there. They can get them.\
 \
@@ -243,7 +241,7 @@ So we found some coordinates from Crack in the Ground (above).
 Attempting to edit the .mat file was a real pain in the ass. Entire
 odyssey deferred to some future cocktail party.
 
-[]{#anchor-5}43.3299631,-120.6790451 (from google earth pro)
+43.3299631,-120.6790451 (from google earth pro)
 
 1364 meters (from google earth pro)
 
@@ -257,22 +255,22 @@ OK so what date are these historic TLEs that we obtained good for? The
 2016 ones?\
 Let’s figure that out.
 
-They are valid for May 12^th^ noon UTC or later
+They are valid for May 12th noon UTC or later
 
 Let’s pick a date for D.B. to fall into the Crack as late in the evening
-on May 13^th^ in Pacific time. This is May 14^th^ in UTC.
+on May 13^th^ in Pacific time. This is May 14th in UTC.
 
 This means it is day 134 in a leap year. This will be useful later! 2016
 was a leap year.
 
-Why? Because May 13^th^ 2016 is a Friday.
+Why? Because May 13th 2016 is a Friday.
 
-So, he falls into the Crack in the Ground on Friday the 13^th^ May 2016,
+So, he falls into the Crack in the Ground on Friday the 13th May 2016,
 Pacific time, like around 10pm.
 
 0500 UTC 14 May 2016
 
-[]{#anchor-6}lct.start\_daynumber = 134
+lct.start\_daynumber = 134
 
 lct.start\_year = 2016
 
@@ -286,7 +284,7 @@ lct.start\_minute = 0
 
 lct.start\_second = 0
 
-OK all this worked but we got (oddly) passes on the 19^th^ of May.\
+OK all this worked but we got (oddly) passes on the 19th of May.\
 \
 But we also got this:\
 \
