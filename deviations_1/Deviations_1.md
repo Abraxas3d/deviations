@@ -1,8 +1,8 @@
 # Deviations_1
 
-Abraxas3d
-MustBeArt
-FirmWarez
+Abraxas3d\
+MustBeArt\
+FirmWarez\
 
 
 **Deviations** is the name of the GNU Radio Conference 2020 (GRCon20)
