@@ -33,16 +33,16 @@ options:
     state: enabled
 
 blocks:
-- name: byte_rate
+- name: excess_bw
   id: variable
   parameters:
     comment: ''
-    value: plb_frequency*4
+    value: '0.35'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 12.0]
+    coordinate: [296, 84.0]
     rotation: 0
     state: enabled
 - name: my_bpsk
@@ -74,7 +74,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [352, 12.0]
+    coordinate: [304, 12.0]
     rotation: 0
     state: enabled
 - name: pi
@@ -86,7 +86,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 4.0]
+    coordinate: [640, 12.0]
     rotation: 0
     state: enabled
 - name: plb_frequency
@@ -98,7 +98,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 4.0]
+    coordinate: [408, 12.0]
     rotation: 0
     state: enabled
 - name: qt_gui_sink_bandwidth
@@ -125,16 +125,28 @@ blocks:
     coordinate: [744, 4.0]
     rotation: 0
     state: true
-- name: sps
+- name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '2'
+    value: (6000-(6000*excess_bw))*sps
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 4.0]
+    coordinate: [192, 12.0]
+    rotation: 0
+    state: enabled
+- name: sps
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 12.0]
     rotation: 0
     state: enabled
 - name: analog_random_source_x_0
@@ -147,14 +159,14 @@ blocks:
     maxoutbuf: '0'
     min: '0'
     minoutbuf: '0'
-    num_samps: '4'
-    repeat: 'True'
+    num_samps: '1000'
+    repeat: 'False'
     type: byte
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 660.0]
+    coordinate: [32, 492.0]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0
@@ -163,15 +175,15 @@ blocks:
     affinity: ''
     alias: ''
     amp: '1'
-    comment: ''
+    comment: 406.040 MHz
     freq: plb_frequency
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
     phase: '0'
-    samp_rate: byte_rate
+    samp_rate: plb_frequency
     type: complex
-    waveform: analog.GR_COS_WAVE
+    waveform: analog.GR_SIN_WAVE
   states:
     bus_sink: false
     bus_source: false
@@ -230,7 +242,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 220.0]
+    coordinate: [288, 396.0]
     rotation: 0
     state: disabled
 - name: blocks_multiply_xx_0
@@ -248,7 +260,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 176.0]
+    coordinate: [512, 224.0]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -267,7 +279,7 @@ blocks:
     bus_structure: null
     coordinate: [1120, 392.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_null_sink_1
   id: blocks_null_sink
   parameters:
@@ -284,26 +296,7 @@ blocks:
     bus_structure: null
     coordinate: [352, 760.0]
     rotation: 0
-    state: true
-- name: blocks_throttle_0
-  id: blocks_throttle
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    ignoretag: 'True'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    samples_per_second: byte_rate
-    type: complex
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [224, 92.0]
-    rotation: 0
-    state: true
+    state: disabled
 - name: blocks_unpacked_to_packed_xx_0
   id: blocks_unpacked_to_packed_xx
   parameters:
@@ -323,35 +316,21 @@ blocks:
     coordinate: [920, 268.0]
     rotation: 0
     state: enabled
-- name: blocks_vector_source_x_0
-  id: blocks_vector_source_x
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    repeat: 'True'
-    tags: '[]'
-    type: byte
-    vector: (list(ord(i) for i in "The quick brown fox"))
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [16, 556.0]
-    rotation: 0
-    state: disabled
 - name: digital_constellation_modulator_0
   id: digital_constellation_modulator
   parameters:
     affinity: ''
     alias: ''
-    comment: ''
+    comment: '6000/8 bits per byte is
+
+      750 bytes per second
+
+      each byte is 32 samples
+
+      24kHz sample rate?'
     constellation: my_bpsk
-    differential: 'False'
-    excess_bw: '0.35'
+    differential: 'True'
+    excess_bw: excess_bw
     log: 'False'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -361,9 +340,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [88, 316.0]
+    coordinate: [40, 308.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: digital_constellation_receiver_cb_0
   id: digital_constellation_receiver_cb
   parameters:
@@ -371,8 +350,8 @@ blocks:
     alias: ''
     comment: ''
     constellation: my_bpsk
-    fmax: '100'
-    fmin: '-100'
+    fmax: '10'
+    fmin: '-10'
     loop_bw: (2*pi)/100
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -381,9 +360,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [720, 416.0]
+    coordinate: [808, 600.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: digital_pfb_clock_sync_xxx_0
   id: digital_pfb_clock_sync_xxx
   parameters:
@@ -404,9 +383,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [472, 412.0]
+    coordinate: [528, 476.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_const_sink_x_0
   id: qtgui_const_sink_x
   parameters:
@@ -496,9 +475,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [608, 324.0]
+    coordinate: [312, 508.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_const_sink_x_0_0
   id: qtgui_const_sink_x
   parameters:
@@ -590,13 +569,13 @@ blocks:
     bus_structure: null
     coordinate: [1072, 716.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_sink_x_0
   id: qtgui_sink_x
   parameters:
     affinity: ''
     alias: ''
-    bw: qt_gui_sink_bandwidth
+    bw: samp_rate
     comment: ''
     fc: plb_frequency
     fftsize: '1024'
@@ -612,12 +591,12 @@ blocks:
     showports: 'True'
     showrf: 'True'
     type: complex
-    wintype: firdes.WIN_BLACKMAN_hARRIS
+    wintype: firdes.WIN_HAMMING
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [448, 84.0]
+    coordinate: [672, 92.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -676,7 +655,7 @@ blocks:
     name: '""'
     nconnections: '3'
     size: '1024'
-    srate: byte_rate
+    srate: samp_rate
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -716,7 +695,7 @@ blocks:
     bus_structure: null
     coordinate: [1080, 608.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_time_sink_x_1
   id: qtgui_time_sink_x
   parameters:
@@ -773,7 +752,7 @@ blocks:
     name: modulated data
     nconnections: '1'
     size: '1024'
-    srate: byte_rate
+    srate: samp_rate
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -811,7 +790,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 516.0]
+    coordinate: [664, 316.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_2
@@ -870,7 +849,7 @@ blocks:
     name: demodulated data
     nconnections: '1'
     size: '1024'
-    srate: byte_rate
+    srate: samp_rate
     stemplot: 'False'
     style1: '1'
     style10: '1'
@@ -910,24 +889,42 @@ blocks:
     bus_structure: null
     coordinate: [1080, 820.0]
     rotation: 0
-    state: true
+    state: enabled
+- name: rational_resampler_xxx_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: '6'
+    fbw: '0'
+    interp: '101510'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: ''
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 284.0]
+    rotation: 0
+    state: disabled
 
 connections:
 - [analog_random_source_x_0, '0', blocks_file_sink_0, '0']
 - [analog_random_source_x_0, '0', blocks_null_sink_1, '0']
 - [analog_random_source_x_0, '0', digital_constellation_modulator_0, '0']
-- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
-- [analog_sig_source_x_0, '0', qtgui_sink_x_0, '0']
+- [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_multiply_xx_0, '0', digital_pfb_clock_sync_xxx_0, '0']
-- [blocks_throttle_0, '0', blocks_multiply_xx_0, '0']
+- [blocks_multiply_xx_0, '0', qtgui_sink_x_0, '0']
 - [blocks_unpacked_to_packed_xx_0, '0', blocks_file_sink_0_0, '0']
 - [blocks_unpacked_to_packed_xx_0, '0', blocks_null_sink_0, '0']
-- [blocks_vector_source_x_0, '0', blocks_file_sink_0, '0']
-- [blocks_vector_source_x_0, '0', digital_constellation_modulator_0, '0']
 - [digital_constellation_modulator_0, '0', blocks_file_sink_1, '0']
 - [digital_constellation_modulator_0, '0', blocks_multiply_xx_0, '1']
 - [digital_constellation_modulator_0, '0', qtgui_const_sink_x_0, '0']
 - [digital_constellation_modulator_0, '0', qtgui_time_sink_x_1, '0']
+- [digital_constellation_modulator_0, '0', rational_resampler_xxx_0, '0']
 - [digital_constellation_receiver_cb_0, '0', blocks_unpacked_to_packed_xx_0, '0']
 - [digital_constellation_receiver_cb_0, '1', qtgui_time_sink_x_0, '0']
 - [digital_constellation_receiver_cb_0, '2', qtgui_time_sink_x_0, '1']
@@ -935,6 +932,9 @@ connections:
 - [digital_constellation_receiver_cb_0, '4', qtgui_const_sink_x_0_0, '0']
 - [digital_constellation_receiver_cb_0, '4', qtgui_time_sink_x_2, '0']
 - [digital_pfb_clock_sync_xxx_0, '0', digital_constellation_receiver_cb_0, '0']
+- [rational_resampler_xxx_0, '0', blocks_multiply_xx_0, '1']
+- [rational_resampler_xxx_0, '0', qtgui_const_sink_x_0, '0']
+- [rational_resampler_xxx_0, '0', qtgui_time_sink_x_1, '0']
 
 metadata:
   file_format: 1
