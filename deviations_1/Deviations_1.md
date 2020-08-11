@@ -414,3 +414,9 @@ KBDN - Bend Municipal Airport (55 nm N)
 KRDM - Roberts Field Airport (64 nm N)
 S39 - Prineville Airport (65 nm N)
 KLKV - Lake County Airport (66 nm S)
+
+
+![Table_Rock_Airport_Sectional_Chart](https://user-images.githubusercontent.com/6608613/89850468-44af8e80-db3f-11ea-8539-dee408453cf1.png)
+
+
+Sectional Chart for Table Rock Airport
