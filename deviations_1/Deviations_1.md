@@ -359,3 +359,58 @@ Here is what SARSAT system looks like.
 Is the .csv all we need? 
 
 
+# Nearby airport! 
+
+FAA INFORMATION EFFECTIVE 16 JULY 2020
+Location
+FAA Identifier: 	OG06
+Lat/Long: 	43-12-41.5090N 120-50-35.9690W
+43-12.691817N 120-50.599483W
+43.2115303,-120.8433247
+(estimated)
+Elevation: 	4305 ft. / 1312 m (estimated)
+Variation: 	17E (1995)
+From city: 	8 miles W of CHRISTMAS VALLEY, OR
+Time zone: 	UTC -7 (UTC -8 during Standard Time)
+Zip code: 	97641
+Airport Operations
+Airport use: 	Private use. Permission required prior to landing
+Activation date: 	10/1997
+Control tower: 	no
+ARTCC: 	SEATTLE CENTER
+FSS: 	MC MINNVILLE FLIGHT SERVICE STATION
+Attendance: 	UNATNDD
+Wind indicator: 	yes
+Segmented circle: 	no
+Airport Services
+Runway Information
+Runway 18/36
+Dimensions: 	3300 x 80 ft. / 1006 x 24 m
+Surface: 	dirt
+	RUNWAY 18	  	RUNWAY 36
+Traffic pattern: 	left		left
+Airport Ownership and Management from official FAA records
+Ownership: 	Privately-owned
+Owner: 	GWAIN STREED
+PO BOX 155
+CHRISTMAS VALLEY, OR 97641
+Phone (503) 481-8001
+Manager: 	GWAIN STREED
+PO BOX 155
+CHRISTMAS VALLEY, OR 97641
+Phone (503) 481-8001
+Airport Operational Statistics
+Aircraft based on the field:	 	1
+Single engine airplanes:	 	1
+	  		  
+Additional Remarks
+- 	FOR CD CTC SEATTLE ARTCC AT 253-351-3694.
+Instrument Procedures
+There are no published instrument procedures at OG06.
+
+Some nearby airports with instrument procedures:
+S21 - Sunriver Airport (48 nm NW)
+KBDN - Bend Municipal Airport (55 nm N)
+KRDM - Roberts Field Airport (64 nm N)
+S39 - Prineville Airport (65 nm N)
+KLKV - Lake County Airport (66 nm S)
