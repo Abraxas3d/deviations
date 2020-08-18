@@ -99,8 +99,6 @@ radio_location = [0 1]; %121.5 MHz beacon used %2 bits
         
 %BCH1 goes here
 
-GPS_device = [0];  %external device sourced the location data
-
 %all location fields go here
 
 %BCH2 field goes here %21 bits
@@ -110,9 +108,8 @@ GPS_device = [0];  %external device sourced the location data
 
 %here are the fields that change per packet
 
-%construct the BCH1-msg here
 
-% BCH1 = []
+% position_data_source = [0]
 % 
 % location_N = [0]
 % 
@@ -158,6 +155,8 @@ BCH1 = flipped_r1;
 %San Diego 32 52 N, 117 16 W
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+position_data_source = [0];
+
 location_N = [0]; 
 
 location_N_degrees = [0 1 0 0 0 0 0]; %7 bits
@@ -173,7 +172,7 @@ location_W_minutes = [0 1 0 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_sd = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -197,7 +196,7 @@ BCH2 = flipped_r2;
 
 message_sd = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
+position_data_source location_N location_N_degrees location_N_minutes ...
 location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_sd);
@@ -224,6 +223,7 @@ length(message_sd);
 %Crack in the Ground 43 20 N, 120 40 W
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+position_data_source = [1];
 
 location_N = [0]; 
 
@@ -240,7 +240,7 @@ location_W_minutes = [1 0 1 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_citg = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -249,7 +249,7 @@ msg2_citg = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
 
 r2;
 
-flipped_r2 = [fliplr(r2)];
+flipped_r2 = [0 fliplr(r2)];
 
 
 BCH2 = flipped_r2;
@@ -264,8 +264,8 @@ BCH2 = flipped_r2;
 
 message_citg = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_citg);
 
@@ -279,6 +279,8 @@ length(message_citg);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %ESA near Madrid, Spain 40 26 N, 3 57 W
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [0]; 
 
@@ -295,7 +297,7 @@ location_W_minutes = [1 1 1 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_madrid = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -317,8 +319,8 @@ BCH2 = flipped_r2;
 
 message_madrid = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_madrid);
 
@@ -335,6 +337,8 @@ length(message_madrid);
 %Stonehenge 51 11 N, 1 50 W
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+position_data_source = [0];
+
 location_N = [0]; 
 
 location_N_degrees = [0 1 1 0 0 1 1]; %7 bits
@@ -350,7 +354,7 @@ location_W_minutes = [1 1 0 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_stone = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -372,8 +376,8 @@ BCH2 = flipped_r2;
 
 message_stone = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_stone);
 
@@ -385,6 +389,8 @@ length(message_stone);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Forbidden City 39 55 N, 116 23 E
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [0]; 
 
@@ -401,7 +407,7 @@ location_W_minutes = [0 1 1 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_for = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -423,8 +429,8 @@ BCH2 = flipped_r2;
 
 message_for = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_for);
 
@@ -437,6 +443,8 @@ length(message_for);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Arecibo 18 21 N, 66 45 W
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [0]; 
 
@@ -453,7 +461,7 @@ location_W_minutes = [1 0 1 1]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_are = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -475,8 +483,8 @@ BCH2 = flipped_r2;
 
 message_are = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_are);
 
@@ -488,6 +496,8 @@ length(message_are);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Maunakea 19 50 N, 155 28 W
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [0]; 
 
@@ -504,7 +514,7 @@ location_W_minutes = [0 1 1 1]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_kea = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -526,8 +536,8 @@ BCH2 = flipped_r2;
 
 message_kea = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_kea);
 
@@ -538,6 +548,8 @@ length(message_kea);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Grand Shrine, Japan 35 24 N, 132 41 E
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [0]; 
 
@@ -554,7 +566,7 @@ location_W_minutes = [1 0 1 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_grand = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -576,16 +588,21 @@ BCH2 = flipped_r2;
 
 message_grand = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_grand);
+
+
+
 
 
 
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Nabta Playa 22 32 N, 30 42 E
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [0]; 
 
@@ -602,7 +619,7 @@ location_W_minutes = [1 0 1 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_nab = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -624,8 +641,8 @@ BCH2 = flipped_r2;
 
 message_nab = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_nab);
 
@@ -637,6 +654,8 @@ length(message_nab);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Chinchurro, Atacama, Camerones Valley 19 01 S, 69 52 W
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [1]; 
 
@@ -653,7 +672,7 @@ location_W_minutes = [1 1 0 1]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_chin = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -675,8 +694,8 @@ BCH2 = flipped_r2;
 
 message_chin = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_chin);
 
@@ -686,6 +705,8 @@ length(message_chin);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Amundsen-Scott, brrrrr 85 06 S, 0 0 E
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [1]; 
 
@@ -702,7 +723,7 @@ location_W_minutes = [0 0 0 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_brr = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -724,8 +745,8 @@ BCH2 = flipped_r2;
 
 message_brr = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_brr);
 
@@ -737,6 +758,8 @@ length(message_brr);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Carkeek Observatory 41 09 S, 175 20 E
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [1]; 
 
@@ -753,7 +776,7 @@ location_W_minutes = [0 1 0 1]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_car = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -775,8 +798,8 @@ BCH2 = flipped_r2;
 
 message_car = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_car);
 
@@ -788,6 +811,8 @@ length(message_car);
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 %Abastumani Observatory 41 45 N, 42 49 E
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+position_data_source = [0];
 
 location_N = [0]; 
 
@@ -804,7 +829,7 @@ location_W_minutes = [1 1 0 0]; %4 minute accuracy; use table
 %construct the BCH2-msg here from location_N location_N_degrees ...
 %location_N_minutes location_W location_W_degrees location_W_minutes
 
-BCH2_msg = [location_N location_N_degrees ...
+BCH2_msg = [position_data_source location_N location_N_degrees ...
     location_N_minutes location_W location_W_degrees location_W_minutes];
 
 msg2_aba = [zero_padding2 fliplr(BCH2_msg) leading_zeros2];
@@ -826,23 +851,13 @@ BCH2 = flipped_r2;
 
 message_aba = [bit_sync frame_sync protocol country_code serial_user ...
 serial_number other_data cs_cert radio_location BCH1 ...
-GPS_device location_N location_N_degrees location_N_minutes ...
-location_W location_W_degrees location_W_minutes BCH2];
+position_data_source location_N location_N_degrees location_N_minutes ...
+location_W location_W_degrees location_W_minutes BCH2]
 
 length(message_aba);
 
 
 
-received_san_diego = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...
-0 0 1 0 1 1 1 1 1 1 0 1 0 1 0 1 0 0 1 0 0 1 1 1 ... 
-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 ...
-0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 ...
-1 0 0 0 0 0 0 0 1 1 0 0 1 0 1 0 1 1 0 0 0 1 0 0 ...
-0 0 0 1 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 ...
-0 0 0 0 0 0 0 0];
 
 
 
-
-
-xor(message_sd, received_san_diego)

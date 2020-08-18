@@ -1,16 +1,17 @@
 options:
   parameters:
-    author: abraxas3d
+    author: Abraxas3d
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
-    copyright: ''
-    description: ''
+    copyright: Public Domain
+    description: BPSK modulator for the Personal Locator Beacon signal for Deviations
+      Capture the Flag for GNU Radio Conference 2020.
     gen_cmake: 'On'
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: wav_file_viewer
+    id: top_block
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Not titled yet
+    title: BPSK PLB Uplink
     window_size: ''
   states:
     bus_sink: false
@@ -32,6 +33,42 @@ options:
     state: enabled
 
 blocks:
+- name: burst_T
+  id: variable
+  parameters:
+    comment: ''
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 84.0]
+    rotation: 0
+    state: true
+- name: doppler
+  id: variable
+  parameters:
+    comment: ''
+    value: '5974'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 84.0]
+    rotation: 0
+    state: true
+- name: excess_bw
+  id: variable
+  parameters:
+    comment: ''
+    value: '0.35'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [192, 84.0]
+    rotation: 0
+    state: enabled
 - name: my_bpsk
   id: variable_constellation_rect
   parameters:
@@ -49,7 +86,21 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 20.0]
+    coordinate: [744, 12.0]
+    rotation: 0
+    state: true
+- name: my_hdr
+  id: variable_header_format_default
+  parameters:
+    access_code: '''0'''
+    bps: '1'
+    comment: ''
+    threshold: '3'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [944, 4.0]
     rotation: 0
     state: true
 - name: nfilts
@@ -61,7 +112,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 76.0]
+    coordinate: [304, 12.0]
     rotation: 0
     state: enabled
 - name: pi
@@ -73,7 +124,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 20.0]
+    coordinate: [640, 12.0]
+    rotation: 0
+    state: enabled
+- name: plb_frequency
+  id: variable
+  parameters:
+    comment: ''
+    value: 406040000 + doppler
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [408, 12.0]
     rotation: 0
     state: enabled
 - name: rrc_taps
@@ -85,19 +148,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 28.0]
+    coordinate: [424, 84.0]
     rotation: 0
     state: true
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '250000'
+    value: 400*sps
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12]
+    coordinate: [192, 12.0]
     rotation: 0
     state: enabled
 - name: sps
@@ -109,139 +172,237 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 12.0]
+    coordinate: [544, 12.0]
     rotation: 0
     state: enabled
-- name: blocks_file_sink_0_0
-  id: blocks_file_sink
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
   parameters:
     affinity: ''
     alias: ''
-    append: 'False'
+    amp: '1'
     comment: ''
-    file: /home/abraxas3d/Documents/Deviations/test_san_diego_received.txt
-    type: byte
-    unbuffered: 'False'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1064, 428.0]
-    rotation: 0
-    state: enabled
-- name: blocks_float_to_complex_0
-  id: blocks_float_to_complex
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
+    freq: 100000+doppler
     maxoutbuf: '0'
     minoutbuf: '0'
-    vlen: '1'
+    offset: '0'
+    phase: '0'
+    samp_rate: '250000'
+    type: complex
+    waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [216, 160.0]
+    coordinate: [408, 676.0]
     rotation: 0
     state: true
-- name: blocks_pack_k_bits_bb_0
-  id: blocks_pack_k_bits_bb
+- name: blocks_complex_to_float_0
+  id: blocks_complex_to_float
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    k: '8'
     maxoutbuf: '0'
     minoutbuf: '0'
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 412.0]
+    coordinate: [896, 672.0]
+    rotation: 0
+    state: true
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 248.0]
     rotation: 0
     state: enabled
-- name: blocks_skiphead_0
-  id: blocks_skiphead
+- name: blocks_multiply_xx_0
+  id: blocks_multiply_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_items: '6'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [784, 712.0]
+    rotation: 0
+    state: true
+- name: blocks_stream_to_tagged_stream_0
+  id: blocks_stream_to_tagged_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    len_tag_key: '"packet_len"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    packet_len: 18+3
     type: byte
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 492.0]
+    coordinate: [312, 276.0]
     rotation: 0
     state: enabled
-- name: blocks_wavfile_source_0
-  id: blocks_wavfile_source
+- name: blocks_stream_to_tagged_stream_1
+  id: blocks_stream_to_tagged_stream
   parameters:
     affinity: ''
     alias: ''
+    comment: ''
+    len_tag_key: '"packet_len"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    packet_len: '8'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 196.0]
+    rotation: 0
+    state: enabled
+- name: blocks_tagged_stream_mux_0
+  id: blocks_tagged_stream_mux
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    lengthtagname: packet_len
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    ninputs: '2'
+    tag_preserve_head_pos: '0'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 240.0]
+    rotation: 0
+    state: true
+- name: blocks_tagged_stream_to_pdu_0
+  id: blocks_tagged_stream_to_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: packet_len
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 204.0]
+    rotation: 0
+    state: true
+- name: blocks_vector_source_x_0
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'False'
+    tags: '[]'
+    type: byte
+    vector: '[255 , 254 , 47, 213, 39, 128, 0, 1, 77, 0, 8, 128, 202, 196, 27, 117,
+      64, 185, 0,0,0]'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [48, 268.0]
+    rotation: 0
+    state: enabled
+- name: blocks_vector_source_x_1
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'False'
+    tags: '[]'
+    type: byte
+    vector: '[0,0,0,0,0,0,0,0]'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [48, 188.0]
+    rotation: 0
+    state: enabled
+- name: blocks_wavfile_sink_0
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bits_per_sample: '8'
     comment: ''
     file: /home/abraxas3d/Documents/Deviations/FridayNight9.wav
-    maxoutbuf: '0'
-    minoutbuf: '0'
     nchan: '2'
-    repeat: 'True'
+    samp_rate: '250000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [72, 288.0]
+    coordinate: [1088, 668.0]
     rotation: 0
     state: true
-- name: digital_constellation_receiver_cb_0
-  id: digital_constellation_receiver_cb
+- name: digital_constellation_modulator_0
+  id: digital_constellation_modulator
   parameters:
     affinity: ''
     alias: ''
-    comment: ''
+    comment: '400 bits per second
+
+      times sps
+
+      gives the sample rate.'
     constellation: my_bpsk
-    fmax: '10'
-    fmin: '-10'
-    loop_bw: (2*pi)/100
+    differential: 'False'
+    excess_bw: excess_bw
+    log: 'False'
     maxoutbuf: '0'
     minoutbuf: '0'
-    showports: 'true'
+    samples_per_symbol: sps
+    verbose: 'False'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 560.0]
+    coordinate: [176, 420.0]
     rotation: 0
     state: enabled
-- name: digital_pfb_clock_sync_xxx_0
-  id: digital_pfb_clock_sync_xxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    filter_size: nfilts
-    init_phase: '0'
-    loop_bw: (2*pi)/100
-    max_dev: '1.5'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    osps: '1'
-    sps: sps
-    taps: rrc_taps
-    type: ccf
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [536, 372.0]
-    rotation: 0
-    state: enabled
-- name: qtgui_const_sink_x_1
+- name: qtgui_const_sink_x_0
   id: qtgui_const_sink_x
   parameters:
     affinity: ''
@@ -270,7 +431,7 @@ blocks:
     color9: '"red"'
     comment: ''
     grid: 'True'
-    gui_hint: 0,0
+    gui_hint: 1,0
     label1: ''
     label10: ''
     label2: ''
@@ -292,9 +453,9 @@ blocks:
     marker7: '0'
     marker8: '0'
     marker9: '0'
-    name: '""'
+    name: After Modulator
     nconnections: '1'
-    size: '1024'
+    size: '832'
     style1: '0'
     style10: '0'
     style2: '0'
@@ -330,39 +491,10 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1056, 676.0]
+    coordinate: [544, 364.0]
     rotation: 0
-    state: true
-- name: qtgui_sink_x_0
-  id: qtgui_sink_x
-  parameters:
-    affinity: ''
-    alias: ''
-    bw: samp_rate
-    comment: ''
-    fc: '0'
-    fftsize: '1024'
-    gui_hint: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    name: '""'
-    plotconst: 'True'
-    plotfreq: 'True'
-    plottime: 'True'
-    plotwaterfall: 'True'
-    rate: '10'
-    showports: 'False'
-    showrf: 'False'
-    type: complex
-    wintype: firdes.WIN_BLACKMAN_hARRIS
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [688, 252.0]
-    rotation: 0
-    state: true
-- name: qtgui_time_sink_x_0
+    state: enabled
+- name: qtgui_time_sink_x_1
   id: qtgui_time_sink_x
   parameters:
     affinity: ''
@@ -390,14 +522,14 @@ blocks:
     color8: dark red
     color9: dark green
     comment: ''
-    ctrlpanel: 'True'
+    ctrlpanel: 'False'
     entags: 'True'
-    grid: 'True'
-    gui_hint: 0,1
-    label1: Error
+    grid: 'False'
+    gui_hint: 4,0
+    label1: Signal 1
     label10: Signal 10
-    label2: Phase
-    label3: Frequency
+    label2: Signal 2
+    label3: Signal 3
     label4: Signal 4
     label5: Signal 5
     label6: Signal 6
@@ -415,9 +547,9 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: '""'
-    nconnections: '3'
-    size: '1024'
+    name: modulated data
+    nconnections: '1'
+    size: '832'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -436,7 +568,7 @@ blocks:
     tr_mode: qtgui.TRIG_MODE_FREE
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
-    type: float
+    type: complex
     update_time: '0.10'
     width1: '1'
     width10: '1'
@@ -456,7 +588,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 528.0]
+    coordinate: [576, 452.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0
@@ -465,9 +597,9 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    decim: '625'
+    decim: '4'
     fbw: '0'
-    interp: '4'
+    interp: 4*250000//samp_rate
     maxoutbuf: '0'
     minoutbuf: '0'
     taps: ''
@@ -476,9 +608,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 244.0]
+    coordinate: [624, 588.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: uhd_usrp_sink_0
   id: uhd_usrp_sink
   parameters:
@@ -752,25 +884,27 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [640, 100.0]
+    coordinate: [840, 468.0]
     rotation: 0
     state: enabled
 
 connections:
-- [blocks_float_to_complex_0, '0', qtgui_sink_x_0, '0']
-- [blocks_float_to_complex_0, '0', rational_resampler_xxx_0, '0']
-- [blocks_float_to_complex_0, '0', uhd_usrp_sink_0, '0']
-- [blocks_pack_k_bits_bb_0, '0', blocks_file_sink_0_0, '0']
-- [blocks_skiphead_0, '0', blocks_pack_k_bits_bb_0, '0']
-- [blocks_wavfile_source_0, '0', blocks_float_to_complex_0, '0']
-- [blocks_wavfile_source_0, '1', blocks_float_to_complex_0, '1']
-- [digital_constellation_receiver_cb_0, '0', blocks_skiphead_0, '0']
-- [digital_constellation_receiver_cb_0, '1', qtgui_time_sink_x_0, '0']
-- [digital_constellation_receiver_cb_0, '2', qtgui_time_sink_x_0, '1']
-- [digital_constellation_receiver_cb_0, '3', qtgui_time_sink_x_0, '2']
-- [digital_constellation_receiver_cb_0, '4', qtgui_const_sink_x_1, '0']
-- [digital_pfb_clock_sync_xxx_0, '0', digital_constellation_receiver_cb_0, '0']
-- [rational_resampler_xxx_0, '0', digital_pfb_clock_sync_xxx_0, '0']
+- [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
+- [blocks_complex_to_float_0, '0', blocks_wavfile_sink_0, '0']
+- [blocks_complex_to_float_0, '1', blocks_wavfile_sink_0, '1']
+- [blocks_multiply_xx_0, '0', blocks_complex_to_float_0, '0']
+- [blocks_stream_to_tagged_stream_0, '0', blocks_tagged_stream_mux_0, '1']
+- [blocks_stream_to_tagged_stream_1, '0', blocks_tagged_stream_mux_0, '0']
+- [blocks_tagged_stream_mux_0, '0', blocks_tagged_stream_to_pdu_0, '0']
+- [blocks_tagged_stream_mux_0, '0', digital_constellation_modulator_0, '0']
+- [blocks_tagged_stream_to_pdu_0, pdus, blocks_message_debug_0, print_pdu]
+- [blocks_vector_source_x_0, '0', blocks_stream_to_tagged_stream_0, '0']
+- [blocks_vector_source_x_1, '0', blocks_stream_to_tagged_stream_1, '0']
+- [digital_constellation_modulator_0, '0', qtgui_const_sink_x_0, '0']
+- [digital_constellation_modulator_0, '0', qtgui_time_sink_x_1, '0']
+- [digital_constellation_modulator_0, '0', rational_resampler_xxx_0, '0']
+- [rational_resampler_xxx_0, '0', blocks_multiply_xx_0, '0']
+- [rational_resampler_xxx_0, '0', uhd_usrp_sink_0, '0']
 
 metadata:
   file_format: 1
