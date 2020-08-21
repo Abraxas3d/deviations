@@ -32,6 +32,30 @@ options:
     state: enabled
 
 blocks:
+- name: carrier
+  id: variable
+  parameters:
+    comment: ''
+    value: '100000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [808, 12.0]
+    rotation: 0
+    state: true
+- name: doppler
+  id: variable
+  parameters:
+    comment: ''
+    value: '5974'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [712, 12.0]
+    rotation: 0
+    state: true
 - name: my_bpsk
   id: variable_constellation_rect
   parameters:
@@ -49,7 +73,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 20.0]
+    coordinate: [1136, 20.0]
     rotation: 0
     state: true
 - name: nfilts
@@ -73,7 +97,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 20.0]
+    coordinate: [344, 12.0]
+    rotation: 0
+    state: enabled
+- name: plb_frequency
+  id: variable
+  parameters:
+    comment: ''
+    value: 406040000 + doppler
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 12.0]
     rotation: 0
     state: enabled
 - name: rrc_taps
@@ -85,7 +121,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 28.0]
+    coordinate: [440, 12.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -109,7 +145,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [296, 12.0]
+    coordinate: [272, 12.0]
     rotation: 0
     state: enabled
 - name: blocks_file_sink_0_0
@@ -119,7 +155,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: /home/abraxas3d/Documents/Deviations/test_san_diego_received.txt
+    file: /home/abraxas3d/Documents/Deviations/test_citg_received.txt
     type: byte
     unbuffered: 'False'
     vlen: '1'
@@ -127,7 +163,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1064, 428.0]
+    coordinate: [1144, 420.0]
     rotation: 0
     state: enabled
 - name: blocks_float_to_complex_0
@@ -159,7 +195,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 412.0]
+    coordinate: [904, 452.0]
     rotation: 0
     state: enabled
 - name: blocks_skiphead_0
@@ -177,7 +213,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 492.0]
+    coordinate: [904, 532.0]
     rotation: 0
     state: enabled
 - name: blocks_wavfile_source_0
@@ -215,7 +251,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 560.0]
+    coordinate: [872, 600.0]
     rotation: 0
     state: enabled
 - name: digital_pfb_clock_sync_xxx_0
@@ -238,9 +274,29 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 372.0]
+    coordinate: [608, 612.0]
     rotation: 0
     state: enabled
+- name: freq_xlating_fir_filter_xxx_0
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: carrier+doppler
+    comment: ''
+    decim: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    taps: '1'
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [368, 292.0]
+    rotation: 0
+    state: true
 - name: qtgui_const_sink_x_1
   id: qtgui_const_sink_x
   parameters:
@@ -270,7 +326,7 @@ blocks:
     color9: '"red"'
     comment: ''
     grid: 'True'
-    gui_hint: 0,0
+    gui_hint: 1,0
     label1: ''
     label10: ''
     label2: ''
@@ -330,7 +386,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1056, 676.0]
+    coordinate: [1160, 716.0]
     rotation: 0
     state: true
 - name: qtgui_sink_x_0
@@ -345,7 +401,7 @@ blocks:
     gui_hint: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    name: '""'
+    name: After Xlating Filter
     plotconst: 'True'
     plotfreq: 'True'
     plottime: 'True'
@@ -359,7 +415,36 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [688, 252.0]
+    coordinate: [880, 324.0]
+    rotation: 0
+    state: true
+- name: qtgui_sink_x_0_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Before Xlating Filter
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [448, 108.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -393,7 +478,7 @@ blocks:
     ctrlpanel: 'True'
     entags: 'True'
     grid: 'True'
-    gui_hint: 0,1
+    gui_hint: 1,1
     label1: Error
     label10: Signal 10
     label2: Phase
@@ -456,7 +541,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 528.0]
+    coordinate: [1176, 568.0]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0
@@ -476,7 +561,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 244.0]
+    coordinate: [376, 476.0]
     rotation: 0
     state: enabled
 - name: uhd_usrp_sink_0
@@ -548,7 +633,7 @@ blocks:
     bw7: '0'
     bw8: '0'
     bw9: '0'
-    center_freq0: '430005974'
+    center_freq0: '430000000'
     center_freq1: '0'
     center_freq10: '0'
     center_freq11: '0'
@@ -752,14 +837,13 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [640, 100.0]
+    coordinate: [880, 100.0]
     rotation: 0
     state: enabled
 
 connections:
-- [blocks_float_to_complex_0, '0', qtgui_sink_x_0, '0']
-- [blocks_float_to_complex_0, '0', rational_resampler_xxx_0, '0']
-- [blocks_float_to_complex_0, '0', uhd_usrp_sink_0, '0']
+- [blocks_float_to_complex_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [blocks_float_to_complex_0, '0', qtgui_sink_x_0_0, '0']
 - [blocks_pack_k_bits_bb_0, '0', blocks_file_sink_0_0, '0']
 - [blocks_skiphead_0, '0', blocks_pack_k_bits_bb_0, '0']
 - [blocks_wavfile_source_0, '0', blocks_float_to_complex_0, '0']
@@ -770,6 +854,9 @@ connections:
 - [digital_constellation_receiver_cb_0, '3', qtgui_time_sink_x_0, '2']
 - [digital_constellation_receiver_cb_0, '4', qtgui_const_sink_x_1, '0']
 - [digital_pfb_clock_sync_xxx_0, '0', digital_constellation_receiver_cb_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', qtgui_sink_x_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', rational_resampler_xxx_0, '0']
+- [freq_xlating_fir_filter_xxx_0, '0', uhd_usrp_sink_0, '0']
 - [rational_resampler_xxx_0, '0', digital_pfb_clock_sync_xxx_0, '0']
 
 metadata:

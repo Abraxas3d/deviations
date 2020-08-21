@@ -49,7 +49,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '5974'
+    value: '5387'
   states:
     bus_sink: false
     bus_source: false
@@ -223,7 +223,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 248.0]
+    coordinate: [1112, 152.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -330,8 +330,8 @@ blocks:
     repeat: 'False'
     tags: '[]'
     type: byte
-    vector: '[255 , 254 , 47, 213, 39, 128, 0, 1, 77, 0, 8, 128, 202, 196, 27, 117,
-      64, 185, 0,0,0]'
+    vector: '[255, 254, 47, 213, 39, 128, 0, 1, 77, 0, 8, 128, 202, 229, 107, 120,
+      167, 216,0,0,0]'
     vlen: '1'
   states:
     bus_sink: false
@@ -367,7 +367,7 @@ blocks:
     alias: ''
     bits_per_sample: '8'
     comment: ''
-    file: /home/abraxas3d/Documents/Deviations/FridayNight9.wav
+    file: /home/abraxas3d/Documents/Deviations/FridayNight3.wav
     nchan: '2'
     samp_rate: '250000'
   states:
@@ -680,7 +680,7 @@ blocks:
     bw7: '0'
     bw8: '0'
     bw9: '0'
-    center_freq0: '430005974'
+    center_freq0: '430000000'
     center_freq1: '0'
     center_freq10: '0'
     center_freq11: '0'

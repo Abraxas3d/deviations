@@ -33,11 +33,11 @@ options:
     state: enabled
 
 blocks:
-- name: burst_T
+- name: carrier
   id: variable
   parameters:
     comment: ''
-    value: '1'
+    value: '100000'
   states:
     bus_sink: false
     bus_source: false
@@ -182,7 +182,7 @@ blocks:
     alias: ''
     amp: '1'
     comment: ''
-    freq: 100000+doppler
+    freq: carrier+doppler
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -194,9 +194,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 676.0]
+    coordinate: [400, 732.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_complex_to_float_0
   id: blocks_complex_to_float
   parameters:
@@ -210,9 +210,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [896, 672.0]
+    coordinate: [944, 648.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: blocks_message_debug_0
   id: blocks_message_debug
   parameters:
@@ -223,9 +223,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 248.0]
+    coordinate: [1136, 176.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_multiply_xx_0
   id: blocks_multiply_xx
   parameters:
@@ -241,9 +241,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [784, 712.0]
+    coordinate: [752, 744.0]
     rotation: 0
-    state: true
+    state: enabled
+- name: blocks_null_sink_0
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [968, 776.0]
+    rotation: 0
+    state: disabled
 - name: blocks_stream_to_tagged_stream_0
   id: blocks_stream_to_tagged_stream
   parameters:
@@ -299,7 +316,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [560, 240.0]
+    coordinate: [576, 224.0]
     rotation: 0
     state: true
 - name: blocks_tagged_stream_to_pdu_0
@@ -318,7 +335,7 @@ blocks:
     bus_structure: null
     coordinate: [816, 204.0]
     rotation: 0
-    state: true
+    state: disabled
 - name: blocks_vector_source_x_0
   id: blocks_vector_source_x
   parameters:
@@ -374,9 +391,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1088, 668.0]
+    coordinate: [1144, 644.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: digital_constellation_modulator_0
   id: digital_constellation_modulator
   parameters:
@@ -608,7 +625,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [624, 588.0]
+    coordinate: [536, 588.0]
     rotation: 0
     state: true
 - name: uhd_usrp_sink_0
@@ -680,7 +697,7 @@ blocks:
     bw7: '0'
     bw8: '0'
     bw9: '0'
-    center_freq0: '430005974'
+    center_freq0: '430000000'
     center_freq1: '0'
     center_freq10: '0'
     center_freq11: '0'
@@ -884,7 +901,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840, 468.0]
+    coordinate: [888, 468.0]
     rotation: 0
     state: enabled
 
@@ -893,6 +910,8 @@ connections:
 - [blocks_complex_to_float_0, '0', blocks_wavfile_sink_0, '0']
 - [blocks_complex_to_float_0, '1', blocks_wavfile_sink_0, '1']
 - [blocks_multiply_xx_0, '0', blocks_complex_to_float_0, '0']
+- [blocks_multiply_xx_0, '0', blocks_null_sink_0, '0']
+- [blocks_multiply_xx_0, '0', uhd_usrp_sink_0, '0']
 - [blocks_stream_to_tagged_stream_0, '0', blocks_tagged_stream_mux_0, '1']
 - [blocks_stream_to_tagged_stream_1, '0', blocks_tagged_stream_mux_0, '0']
 - [blocks_tagged_stream_mux_0, '0', blocks_tagged_stream_to_pdu_0, '0']
@@ -904,7 +923,6 @@ connections:
 - [digital_constellation_modulator_0, '0', qtgui_time_sink_x_1, '0']
 - [digital_constellation_modulator_0, '0', rational_resampler_xxx_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_multiply_xx_0, '0']
-- [rational_resampler_xxx_0, '0', uhd_usrp_sink_0, '0']
 
 metadata:
   file_format: 1
