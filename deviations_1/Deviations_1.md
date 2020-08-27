@@ -460,3 +460,20 @@ brr [255, 254, 47, 213, 39, 128, 0, 1, 77, 0, 8, 128, 202, 218, 164, 0, 14, 93]
 car [255, 254, 47, 213, 39, 128, 0, 1, 77, 0, 8, 128, 202, 213, 36, 175, 95, 162]
 
 aba [255, 254, 47, 213, 39, 128, 0, 1, 77, 0, 8, 128, 202, 213, 54, 42, 196, 96]
+
+
+Here's one of the JPEG files with a flag embedded in it.
+
+Here's the flag:
+Flag{Which_problem_is_the_hard_one?}
+
+Here's how to extract it:
+steghide extract -sf filename.jpg
+(hit enter to use a blank password)
+(the flag is saved in a file named stegflag.txt)
+
+Here's how I created it:
+create a file stegflag.txt with the flag in it
+steghide embed -ef stegflag.txt -cf CCF25082020_3.jpg -sf CCF25082020_3_flagged.jpg
+hit enter twice to use a blank password
+
