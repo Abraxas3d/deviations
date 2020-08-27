@@ -7,7 +7,7 @@
 import numpy as np
 from skyfield.api import load, Topos
 
-frequency = 146e6
+frequency = 406e6
 satellite_number = 25338
 
 # Crack in the Ground, OR 43 20 01.30 N, 120 40 20.27W 1365m
