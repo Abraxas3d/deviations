@@ -34,6 +34,12 @@ I pulled myself back up towards my desk.
 
 “No, you actually-”
 
-“Copasat is very glad you are still here,” he said. And, he left. 
+“Copasat is very glad you are still here. Look, find out what’s going on. If there’s a real emergency in there, then call it in and they’ll send out CAP or whoever. A real emergency is more important than someone scoring points with a hack, but a hack is going to shut down SARSAT. Just, find out. Who else do you want? I’ll call them in.” 
+
+“I don’t know until I get a look at it. I’ll let you know through the service,” I said. 
+
+I was already looking at the files. 
+
+And, he was gone.
 
 Friday the 13h had struck again.
