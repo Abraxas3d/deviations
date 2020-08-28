@@ -1,14 +1,25 @@
 Delivered-To: 501@tictu.ests.fbi.gov
+
 Received: by 153.31.100.88 with SMTP id ;
+
         Fri, 13 May 2016 -0700 (PDT)
+
 X-Received: DCS3000 CA7
+
 Return-Path: <info@fbi.gov>
+
 Received: ECDHE-RSA-AES128-GCM-SHA256 bits=128/128;
+
         Fri, 13 May 2016 -0700 (PDT)
+
 To: <501@tictu>
+
 Subject: What’s with this wav file?
+
 From: ops@tictu.ests.fbi.gov
+
 Message-Id: <>
+
 Date: Fri, 13 May 2016 -0500 (CDT)
 
 1) Provenance on the dated .wav? 
@@ -23,16 +34,27 @@ Date: Fri, 13 May 2016 -0500 (CDT)
 
 
 Delivered-To: ops@tictu.ests.fbi.gov
+
 Received: by 153.31.100.73 with SMTP id ;
-        Fri, 13 May 2016 -0700 (PDT)
+
+       Fri, 13 May 2016 -0700 (PDT)
+
 X-Received: DCS3000 CAA
+
 Return-Path: <info@fbi.gov>
+
 Received: ECDHE-RSA-AES128-GCM-SHA256 bits=128/128;
+        
         Fri, 13 May 2016 -0700 (PDT)
+
 To: <ops@tictu.ests.fbi.gov>
+
 Subject: Re: What’s with this wav file?
+
 From: 501@tictu.ests.fbi.gov
+
 Message-Id: <>
+
 Date: Fri, 13 May 2016 -0500 (CDT)
 
 1) Tip line. Unedited. 
