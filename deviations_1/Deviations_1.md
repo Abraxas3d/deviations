@@ -477,3 +477,15 @@ create a file stegflag.txt with the flag in it
 steghide embed -ef stegflag.txt -cf CCF25082020_3.jpg -sf CCF25082020_3_flagged.jpg
 hit enter twice to use a blank password
 
+
+
+
+
+We found the baseband of the 406MHz beacons. I think we should consider using it as the baseband for the beacon recordings. 
+
+
+![COSPAS-block-diagram](https://user-images.githubusercontent.com/6608613/91521570-d2fc7200-e8ac-11ea-8a83-6d598347d26a.jpeg)
+
+
+
+
