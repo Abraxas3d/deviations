@@ -45,17 +45,21 @@ blocks:
     rotation: 0
     state: enabled
 - name: doppler
-  id: variable
+  id: variable_function_probe
   parameters:
+    block_id: dd
     comment: ''
-    value: '1000'
+    function_args: ''
+    function_name: level
+    poll_rate: '10000'
+    value: '0'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 20.0]
+    coordinate: [640, 20.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: interpolation_factor
   id: variable
   parameters:
@@ -252,9 +256,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 644.0]
+    coordinate: [568, 644.0]
     rotation: 0
     state: enabled
+- name: analog_sig_source_x_3
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '2000'
+    comment: ''
+    freq: '0.05'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: interpolation_rate
+    type: float
+    waveform: analog.GR_SAW_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [968, 612.0]
+    rotation: 0
+    state: true
 - name: band_pass_filter_0_0_0
   id: band_pass_filter
   parameters:
@@ -264,9 +290,9 @@ blocks:
     comment: ''
     decim: '1'
     gain: '1'
-    high_cutoff_freq: carrier + 6000
+    high_cutoff_freq: carrier + 6000 + doppler
     interp: '1'
-    low_cutoff_freq: carrier - 5000
+    low_cutoff_freq: carrier - 5000 + doppler
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_rate: interpolation_rate
@@ -331,7 +357,7 @@ blocks:
     bus_structure: null
     coordinate: [1184, 392.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_multiply_xx_0
   id: blocks_multiply_xx
   parameters:
@@ -396,14 +422,28 @@ blocks:
     comment: ''
     file: /home/abraxas3d/Documents/Deviations/ChristmasValley.wav
     nchan: '2'
-    samp_rate: '4800'
+    samp_rate: interpolation_rate
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [1224, 492.0]
     rotation: 0
-    state: disabled
+    state: enabled
+- name: dd
+  id: blocks_probe_signal_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    type: float
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1208, 652.0]
+    rotation: 0
+    state: true
 - name: paint_image_source_0
   id: paint_image_source
   parameters:
@@ -452,7 +492,7 @@ blocks:
     bw: interpolation_rate
     comment: ''
     fc: '0'
-    fftsize: 8092*2
+    fftsize: 1024*8
     gui_hint: 0,0
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -472,7 +512,7 @@ blocks:
     bus_structure: null
     coordinate: [1216, 252.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_waterfall_sink_x_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -531,9 +571,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 240.0]
+    coordinate: [744, 232.0]
     rotation: 0
-    state: true
+    state: disabled
 
 connections:
 - [analog_noise_source_x_0, '0', blocks_add_xx_1, '0']
@@ -543,6 +583,7 @@ connections:
 - [analog_sig_source_x_1_0_0, '0', blocks_add_xx_0, '3']
 - [analog_sig_source_x_1_0_0_0, '0', blocks_add_xx_0, '4']
 - [analog_sig_source_x_2, '0', blocks_multiply_xx_0, '1']
+- [analog_sig_source_x_3, '0', dd, '0']
 - [band_pass_filter_0_0_0, '0', blocks_add_xx_1, '1']
 - [blocks_add_xx_0, '0', blocks_repeat_0, '0']
 - [blocks_add_xx_0, '0', qtgui_waterfall_sink_x_0, '0']
