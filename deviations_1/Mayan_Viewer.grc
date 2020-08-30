@@ -157,7 +157,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    file: /home/abraxas3d/Documents/Deviations/ChristmasValley.wav
+    file: /home/abraxas3d/Documents/Deviations/ChristmasValleyPass8.wav
     maxoutbuf: '0'
     minoutbuf: '0'
     nchan: '2'
@@ -183,10 +183,10 @@ blocks:
     minoutbuf: '0'
     name: '""'
     plotconst: 'True'
-    plotfreq: 'True'
+    plotfreq: 'False'
     plottime: 'True'
     plotwaterfall: 'True'
-    rate: '10'
+    rate: '1000'
     showports: 'False'
     showrf: 'False'
     type: complex
@@ -195,7 +195,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [744, 292.0]
+    coordinate: [680, 324.0]
     rotation: 0
     state: enabled
 
