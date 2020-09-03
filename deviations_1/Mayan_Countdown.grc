@@ -461,7 +461,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1008, 92.0]
+    coordinate: [1024, 132.0]
     rotation: 0
     state: true
 - name: blocks_repeat_1_0
