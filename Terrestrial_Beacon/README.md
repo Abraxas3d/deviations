@@ -1,2 +1,3 @@
 Here are the files used to create the 121.5 MHz terrestrial beacon, along with some pilot chatter. There are clues in here that lead you to Crack in the Ground as the location of the stranded hiker. 
 
+ChirpSignalFromPLB_multipath.3 takes two audio files (file1 and file2) as input. It creates the warbling 121.5 MHz terrestrial beacon, used to direction find locally once search and rescue arrives in the vicinity of an alert. The audio files here are pilot chatter. They talk about the beacon and seeing headlights in a gully. There are clues with respect to the call signs of the airplanes. Close Encounters, and the flight that DB Cooper hijacked. 
