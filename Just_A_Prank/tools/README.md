@@ -7,3 +7,5 @@ These packet contents were inserted as vectors in GNU Radio flowgraphs.
 There is one flowgraph per beacon.
 
 wav-file-viewer.grc demodulates and decodes the .wav files created by the beacons. Turn repeat file on. 
+
+longer-pass is the output of range-rate.py. It's the times and doppler for the uplink 406 MHz beacons transmitted from Crack in the Ground for four passes on 12 May 2016. 
