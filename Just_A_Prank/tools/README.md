@@ -9,3 +9,5 @@ There is one flowgraph per beacon.
 wav-file-viewer.grc demodulates and decodes the .wav files created by the beacons. Turn repeat file on. 
 
 longer-pass is the output of range-rate.py. It's the times and doppler for the uplink 406 MHz beacons transmitted from Crack in the Ground for four passes on 12 May 2016. 
+
+BCH_Generation.m is a MATLAB script used to create the fields of the 406MHz beacon packets. 
