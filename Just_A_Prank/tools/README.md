@@ -4,4 +4,6 @@ MATLAB was used to create the packet contents as close as reasonable according t
 
 These packet contents were inserted as vectors in GNU Radio flowgraphs.
 
-There is one flowgraph per beacon. 
+There is one flowgraph per beacon.
+
+wav-file-viewer.grc demodulates and decodes the .wav files created by the beacons. Turn repeat file on. 
