@@ -23,3 +23,5 @@ binwalk, or something similar, will be very useful to separate out the files fro
 
 The preamble text file and the image files were packaged together using cat, then sent by the transmitter. The preamble was 
 first, then image 1, then preamble, then image 2, then preamble, then image 3, then preamble.
+
+A Proof and A Proof 2 are bonus challenges. Solve the math problems in the images, and present a proof for additional points. 
