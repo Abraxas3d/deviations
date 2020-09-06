@@ -49,3 +49,5 @@ The flag you are looking for is the geographical location where someone has set 
 The geographical place name should be wrapped like so:
 
 Flag{Your Answer Here}
+
+Flag{Crack in the Ground}
