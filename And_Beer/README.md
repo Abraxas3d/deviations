@@ -35,8 +35,6 @@ VS Q VSV CZX CZ KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV ZC
 
 What could it mean?
 
-
-------
 flag = "f!AG(UA_UA_UA_UA_UA)"
 
 Mentioning the Model 28 ASR to put the player on the track of Baudot
