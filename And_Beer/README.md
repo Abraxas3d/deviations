@@ -54,7 +54,8 @@ Decoding manually. Start with the cryptic message and replace each letter
 with a picture of the paper tape column for that character:
 (view this in a wide window with a fixed pitch font)
 
-```VS Q VSV CZX CZ KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV ZC 
+```
+VS Q VSV CZX CZ KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV ZC 
 
  o o  o   oo  o o  o  o      o  o  o      o  o  o      o  o  o      o  o  o  o 
 o  o o o o   o  o  o o o     o  o o o     o  o o o     o  o o o     o  o o o  o
