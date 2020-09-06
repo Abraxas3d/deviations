@@ -54,15 +54,15 @@ Decoding manually. Start with the cryptic message and replace each letter
 with a picture of the paper tape column for that character:
 (view this in a wide window with a fixed pitch font)
 
-VS Q VSV CZX CZ KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV ZC 
+```VS Q VSV CZX CZ KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV ZC 
 
  o o  o   oo  o o  o  o      o  o  o      o  o  o      o  o  o      o  o  o  o 
 o  o o o o   o  o  o o o     o  o o o     o  o o o     o  o o o     o  o o o  o
 oo o ooo o o o  o  o ooo     o  o ooo     o  o ooo     o  o ooo     o  o ooo  o
 o    o o o o o  o  o o o     o  o o o     o  o o o     o  o o o     o  o o o  o
 o  o o o  oo  o  oo  o o ooo  oo  o o ooo  oo  o o ooo  oo  o o ooo  oo  o o o 
-
+```
 then squint. Hard.
-
+```
 f  !  A   G  (   U    A   _   U    A   _   U    A   _   U    A   _   U    A   )
-
+```
