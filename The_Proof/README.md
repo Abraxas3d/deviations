@@ -17,3 +17,5 @@ She looked down at a sheet covered in lime green post-it notes.
 -=-=-=-=-
 
 What is the general location in the FridayNight1 beacon files?
+
+Flag{Japan}
