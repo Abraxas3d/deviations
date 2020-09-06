@@ -25,3 +25,40 @@ I looked at the letters. This had to just be noise. Something induced on an old 
 "Travel?" 
 
 f!AG(UA_UA_UA_UA_UA)
+
+
+
+
+He found this cryptic message printed out on the old Teletype Model 28 ASR.
+
+VS Q VSV CZX CZ KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV ZC 
+
+What could it mean?
+
+
+------
+flag = "f!AG(UA_UA_UA_UA_UA)"
+
+Mentioning the Model 28 ASR to put the player on the track of Baudot
+(the Model 28 was a Baudot machine) and paper tape (ASR means it had
+a paper tape reader/punch)
+
+Here's a Baudot paper tape reference chart:
+https://hackaday.com/2015/09/27/demonstrating-baudot-code/
+
+Decoding manually. Start with the cryptic message and replace each letter
+with a picture of the paper tape column for that character:
+(view this in a wide window with a fixed pitch font)
+
+VS Q VSV CZX CZ KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV TTT KTTK VSV ZC 
+
+ o o  o   oo  o o  o  o      o  o  o      o  o  o      o  o  o      o  o  o  o 
+o  o o o o   o  o  o o o     o  o o o     o  o o o     o  o o o     o  o o o  o
+oo o ooo o o o  o  o ooo     o  o ooo     o  o ooo     o  o ooo     o  o ooo  o
+o    o o o o o  o  o o o     o  o o o     o  o o o     o  o o o     o  o o o  o
+o  o o o  oo  o  oo  o o ooo  oo  o o ooo  oo  o o ooo  oo  o o ooo  oo  o o o 
+
+then squint. Hard.
+
+f  !  A   G  (   U    A   _   U    A   _   U    A   _   U    A   _   U    A   )
+
