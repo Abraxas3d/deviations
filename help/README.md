@@ -360,4 +360,6 @@ F7 is 5
 
 # Transmission Strategy
 
-High speed morse code. Numbers station on licensed band reported to FCC. Direction finding points to Eastern Hemisphere, but it's moving around. 
+High speed morse code. Numbers station on licensed band reported to FCC. Direction finding points to Eastern Hemisphere, but it's moving around.
+
+Forbidden City in China is one of the beacons, but the hemisphere bit was deliberately changed. You have to use the error correcting code to find out that this beacon is really not in the middle of nowhere in the Western US. 
