@@ -1,6 +1,6 @@
 # Help 
 
-The 9 by 9 door grids in the Forbidden Palace inspired a Sudoku puzzle. 
+The 9 by 9 door grids in the Forbidden Palace inspired a Sudoku puzzle. In this case, we are going to solve it backwards. We get the solution, and we have to fill in the numbers that the puzzle started out with. 
 
 ------
 
