@@ -4,7 +4,7 @@ The 9 by 9 door grids in the Forbidden Palace inspired a Sudoku puzzle. In this 
 
 ------
 
-Solution Steps
+# Solution Steps
 
 Here you can view the logical steps used to solve the sudoku puzzle. Here is the raw solution, from the web solver.
 
@@ -256,6 +256,7 @@ The cell has a single candidate with the value 5
 Actions:
 Cell solved with the value 5.
 
+# Simplified Solution
 
 Reduced solution set, in "numbers station" format:
 
@@ -356,3 +357,7 @@ C7 is 6
 C8 is 4
 
 F7 is 5
+
+# Transmission Strategy
+
+High speed morse code. Numbers station on licensed band reported to FCC. Direction finding points to Eastern Hemisphere, but it's moving around. 
