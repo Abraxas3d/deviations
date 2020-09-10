@@ -1,11 +1,12 @@
-A 9 by 9 grid in the Forbidden Palace inspired a Sudoku puzzle. 
+# Help 
+
+The 9 by 9 door grids in the Forbidden Palace inspired a Sudoku puzzle. 
 
 ------
 
 Solution Steps
+
 Here you can view the logical steps used to solve the sudoku puzzle.
-Click on a step to show its effects in the grid.
-You can navigate through steps using the up and down arrows on the keyboard.  More information >>
 
   Step 1: Naked Single in cell ( D3 )
 The cell has a single candidate with the value 6
