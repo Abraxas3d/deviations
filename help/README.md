@@ -6,7 +6,7 @@ The 9 by 9 door grids in the Forbidden Palace inspired a Sudoku puzzle. In this 
 
 Solution Steps
 
-Here you can view the logical steps used to solve the sudoku puzzle.
+Here you can view the logical steps used to solve the sudoku puzzle. Here is the raw solution, from the web solver.
 
   Step 1: Naked Single in cell ( D3 )
 The cell has a single candidate with the value 6
@@ -255,3 +255,104 @@ Cell solved with the value 4.
 The cell has a single candidate with the value 5
 Actions:
 Cell solved with the value 5.
+
+
+Reduced solution set, in "numbers station" format:
+
+D3 is 6
+
+D8 is 8
+
+D7 is 9
+
+B9 is 8
+
+B2 is 2
+
+B8 is 1
+
+H4 is 2
+
+I9 is 1
+
+H8 is 7
+
+H2 is 5
+
+G2 is 6
+
+G9 is 9
+
+H1 is 9
+
+C4 is 9
+
+B4 is 4
+
+B6 is 6
+
+E4 is 8
+
+F4 is 1
+
+A5 is 7
+
+B1 is 5
+
+F6 is 4
+
+G4 is 7
+
+A1 is 6
+
+A3 is 4
+
+B3 is 9
+
+E5 is 6
+
+G3 is 3
+
+H6 is 3
+
+E3 is 5
+
+G7 is 8
+
+G6 is 1
+
+I2 is 7
+
+C2 is 3
+
+E9 is 4
+
+F3 is 7
+
+I1 is 8
+
+C1 is 7
+
+E8 is3
+
+F1 is 3
+
+H9 is 6
+
+I5 is 4
+
+C9 is 5
+
+F8 is 6
+
+H5 is 8
+
+H7 is 4
+
+I7 is 3
+
+C7 is 6
+
+C8 is 4
+
+F7 is 5
