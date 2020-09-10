@@ -98,3 +98,17 @@ They win!
 # g3ruh_recv.kiss
 
 This is the output of the receive flowgraph, in KISS format.
+
+# Text from challenge intro - solving Timey Wimey is required to reach this challenge
+
+We had all been uncomfortable with the messages from under the ice. It just wasn't believable that our hiker or someone associated with him would be able to deploy this many pranks, this widely, while laid up in the hospital. 
+
+Increasing reports of GPS intereference were making the news. The levels weren't yet above the old selective availability threshold, so all official public opinions were that things were performing normally. 
+
+However, this was far from the case. 
+
+A large amount of our staff was now supporting a multi-agency effort into what was going on with GPS. The amount of devices, equipment, and services depending on GPS was enormous. 
+
+I took over anything that the automated scripts thought was useful chatter. 
+
+And on Thursday morning, I got an unusual file. I started on that one first. 
