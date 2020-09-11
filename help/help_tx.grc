@@ -1,0 +1,110 @@
+options:
+  parameters:
+    author: Abraxas3d
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: Chirp Transmitter for PLB
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: top_block
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Chirp Transmitter
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: carrier
+  id: variable
+  parameters:
+    comment: ''
+    value: '100000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 20.0]
+    rotation: 0
+    state: enabled
+- name: doppler
+  id: variable
+  parameters:
+    comment: ''
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [336, 28.0]
+    rotation: 0
+    state: disabled
+- name: interpolation_factor
+  id: variable
+  parameters:
+    comment: ''
+    value: '6'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [624, 20.0]
+    rotation: 0
+    state: enabled
+- name: interpolation_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: interpolation_factor*samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 20.0]
+    rotation: 0
+    state: enabled
+- name: pi
+  id: variable
+  parameters:
+    comment: ''
+    value: '3.14159'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 20]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '44100'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 124.0]
+    rotation: 0
+    state: enabled
+connections: []
+
+metadata:
+  file_format: 1
