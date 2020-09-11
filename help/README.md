@@ -368,4 +368,21 @@ Found https://github.com/duggabe/gr-morse-code-gen for generating Morse code. Tr
 
 String for the relevant block: "it is a numbers game it is a numbers game it is a numbers game D3 is 6 D8 is 8 D7 is 9 B9 is 8 B2 is 2 B8 is 1 H4 is 2 I9 is 1 H8 is 7 H2 is 5 G2 is 6 G9 is 9 H1 is 9 C4 is 9 B4 is 4 B6 is 6 E4 is 8 F4 is 1 A5 is 7 B1 is 5 F6 is 4 G4 is 7 A1 is 6 A3 is 4 B3 is 9 E5 is 6 G3 is 3 H6 is 3 E3 is 5 G7 is 8 G6 is 1 I2 is 7 C2 is 3 E9 is 4 F3 is 7 I1 is 8 C1 is 7 E8 is3 F1 is 3 H9 is 6 I5 is 4 C9 is 5 F8 is 6 H5 is 8 H7 is 4 I7 is 3 C7 is 6 C8 is 4 F7 is 5"
 
+How to make this more challenging? Turn the signal into HF desense. 
+
+# Text of Challenge in CTFd
+
+We had all been uncomfortable with the messages from under the ice. It just wasn't believable that our hiker or someone associated with him would be able to deploy this many pranks, this widely, while laid up in the hospital. 
+
+Increasing reports of GPS intereference were making the news. The levels weren't yet above the old selective availability threshold, so all official public opinions were that things were performing normally. 
+
+However, this was far from the case. 
+
+A large amount of our staff was now supporting a multi-agency effort into what was going on with GPS. The amount of devices, equipment, and services depending on GPS was enormous. 
+
+I took over analyzing anything that the automated scripts thought was useful chatter, related to any of the target cities from the beacons.
+
+And on Thursday morning, I got an unusual file. I started on that one first. 
+
+"What game are we playing today?" I said softly to myself. 
 
